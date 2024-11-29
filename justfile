@@ -1,4 +1,4 @@
-#    <one line to give the program's name and a brief idea of what it does.>  
+#    File tagging utility  
 #    Copyright © 2024 Charudatta
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -14,9 +14,11 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
-#    email contact: 152109007c@gmailcom
+#    email contact: 152109007c@gmail.com
 
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
+local__path := "C:/Users/$env:username/Documents/GitHub/"
 
 default:
     @just --choose
@@ -24,31 +26,13 @@ default:
 # create files and directories
 init:
     #!pwsh
-    git init
-    New-Item -ItemType "file" -Path ".gitattribute", "main.py", "requirements.json", "config.json"
-    New-Item -ItemType "directory" -Path "docs", "src", "tests"
-    New-Item -ItemType "file" -Path .\* -Name "__init__.py" -ErrorAction SilentlyContinue
-    gig gen python > .gitignore 
-    Add-LicenseHeader
-    7z a archives.7z .gitignore
-
-# set configuration variables
-config:
-    #!pwsh
-    config.json >> .gitignore
-    Set-EnvFromJson
+    $ProjectName = Read-Host "Enter your project name"
+    Initialize-Project -ProjectName $ProjectName
 
 # add documentation to repo
 docs:
     #!pwsh
-    conda activate blog
-    python -m mkdocs new .
-
-# genearte and readme to repo    
-readme:
-    #!pwsh
-    conda activate w
-    python C:/Users/$env:username/Documents/GitHub/readmeGen/main.py
+    mkdocs build
 
 # version control repo with git
 commit message="init":
@@ -60,17 +44,40 @@ commit message="init":
 exe file_name:
     #!pwsh
     pyinstaller src/{{file_name}} --onefile
-
-# run python unit test 
-tests:
+ 
+# exit just file
+quit:
     #!pwsh
-    python -m unittest discover -s tests
+    write-Host "Copyright © 2024 Charudatta"
+    
+# deploy application
+deploy:
+    #!pwsh
+    $CommitMessage = Read-Host "Enter your commit message"
+    Invoke-DeployChecks -CommitMessage $CommitMessage
 
-# Add custom tasks, enviroment variables
+# view logs
+view-logs:
+    #!pwsh
+    Get-Content -Path "app.log" -Tail 10
 
+# clean up
+clean:
+    #!pwsh
+    Remove-Item -Recurse -Force dist, build, *.egg-info
 
+# project management add task and todos 
+tasks:
+    #!pwsh
+    python {{local__path}}"project-manager/src/project-manager-cli"
+
+# Add custom tasks, environment variables
+
+# run project
+# run:
+#    #!pwsh
+#   python run.py
 
 
 
         
-
