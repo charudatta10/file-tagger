@@ -15,7 +15,7 @@ def test(ctx):
     ctx.run("python -m unittest discover -s tests")
 
 @task
-def train(ctx):
+def run(ctx):
     with ctx.prefix('conda activate webdev'):
         ctx.run("python run.py")
 
@@ -30,4 +30,4 @@ def default(ctx):
     ctx.run(f"invoke {tasks[choice - 1]}")
 
 # Create a collection of tasks
-ns = Collection(update_progress, commit, quit, run_backup, list_pipx_installed_packages, list_scoop_installed_apps, default)
+ns = Collection(commit, quit, test, run, default)
