@@ -1,0 +1,13 @@
+{
+    "main.py": [
+        "src",
+        "python"
+    ],
+    "archive": [
+        "inbox"
+    ],
+    "__main__.py": [
+        "archive",
+        "inbox"
+    ]
+}

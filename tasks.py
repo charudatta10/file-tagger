@@ -1,5 +1,5 @@
 from invoke import task, Collection, Context
-
+import os
 
 @task
 def commit(ctx, message="init"):
@@ -16,7 +16,23 @@ def test(ctx):
 
 @task
 def run(ctx):
-    ctx.run("python run.py")
+    choice = input("Enter the input argument add/ remove: ")
+    print("Current directory files:")
+    # Get the list of files in the current directory
+    files = [f for f in os.listdir() if os.path.isfile(f)]
+    
+    # Display the list of files with indices
+    print("Select a file from the list:")
+    for i, file in enumerate(files):
+        print(f"{i}: {file}")
+    
+    # Get the file index from the user
+    file_index = int(input("Enter the file number: "))
+    
+    # Get the selected file name
+    filename = files[file_index]
+    tags = input("Enter the tags (separated by spaces): ").split()
+    ctx.run(f"python __main__.py {choice} {filename} {' '.join(tags)}")
 
 @task(default=True)
 def default(ctx):
