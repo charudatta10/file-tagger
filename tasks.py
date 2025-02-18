@@ -16,8 +16,7 @@ def test(ctx):
 
 @task
 def run(ctx):
-    with ctx.prefix('conda activate webdev'):
-        ctx.run("python run.py")
+    ctx.run("python run.py")
 
 @task(default=True)
 def default(ctx):

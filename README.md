@@ -1,4 +1,3 @@
- 
 # File Tag
 
 <!-- Badges: Project Status GitHub -->
@@ -13,7 +12,7 @@
 ![project](https://flat.badgen.net///static/project/file_tag)
 
 <!-- Badges: Tools used -->
-`python` `just` `gig` `json` 
+`python` `just` `gig` `json`
 
 ## Documentation 🗎
 
@@ -21,9 +20,8 @@ add tags to file and sort and order files by tags.
 
 ## Features 🌟
 
-- add custom tags 
-- mutiple tagging option available 
- 
+- add custom tags
+- mutiple tagging option available
 
 ## Getting Started 🌱
 
@@ -31,6 +29,6 @@ Run `just` cmd in command prompt.
 
 ✨[Report a 🐛 or Request a ⭐](https://github.com/charudatta10/file_tag/issues)✨
 
-Copyright :copyright: 2024 CK :tm: @ charudatta10.   
+Copyright :copyright: 2024 CK :tm: @ charudatta10.
 
 <!-- Acknowledgment, References, Misc -->
