@@ -1,5 +1,7 @@
 import os
 import json
+import argparse
+import sys
 
 class FileTag:
 
@@ -25,8 +27,16 @@ class FileTag:
             self.file_tags[file_path] = tags
 
     def show_tags(self) -> None:
+        if not self.file_tags:
+            print("No tags found.")
+            return
+        max_file_len = max(len(file_path) for file_path in self.file_tags)
+        max_tag_len = max((len(', '.join(tags)) for tags in self.file_tags.values()), default=0)
+        header = f"{'File Path'.ljust(max_file_len)} | {'Tags'.ljust(max_tag_len)}"
+        print(header)
+        print('-' * len(header))
         for file_path, tags in self.file_tags.items():
-            print(f"{file_path}: {', '.join(tags)}")
+            print(f"{file_path.ljust(max_file_len)} | {', '.join(tags).ljust(max_tag_len)}")
 
     def remove_tag(self, file_path: str, tag: str) -> None:
         if file_path in self.file_tags and tag in self.file_tags[file_path]:
@@ -39,13 +49,47 @@ class FileTag:
         for file_path, tags in sorted_files:
             print(f"{file_path}: {', '.join(tags)}")
 
-if __name__ == "__main__":
+def main():
+    parser = argparse.ArgumentParser(description="File Tagger CLI")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # Add tags
+    add_parser = subparsers.add_parser("add", help="Add tags to a file")
+    add_parser.add_argument("file", help="File path")
+    add_parser.add_argument("tags", nargs="+", help="Tags to add")
+
+    # Remove tag
+    remove_parser = subparsers.add_parser("remove", help="Remove a tag from a file")
+    remove_parser.add_argument("file", help="File path")
+    remove_parser.add_argument("tag", help="Tag to remove")
+
+    # Show tags
+    show_parser = subparsers.add_parser("show", help="Show all file tags")
+
+    # Sort tags
+    sort_parser = subparsers.add_parser("sort", help="Show all file tags sorted by first tag")
+
+    parser.add_argument("--tags-file", default="file_tags.json", help="Path to tags file (default: file_tags.json)")
+
+    args = parser.parse_args()
+
     t = FileTag()
-    t.load_file()
-    t.add_tags("main.py", ["src", "python"])
-    t.add_tags("archives.7z", "archive")
-    t.sort_tags()
-    t.show_tags()
-    t.remove_tag("archives.7z", "archive")
-    t.save_file()
+    t.load_file(args.tags_file)
+
+    if args.command == "add":
+        t.add_tags(args.file, args.tags)
+        t.save_file(args.tags_file)
+    elif args.command == "remove":
+        t.remove_tag(args.file, args.tag)
+        t.save_file(args.tags_file)
+    elif args.command == "show":
+        t.show_tags()
+    elif args.command == "sort":
+        t.sort_tags()
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
 

@@ -9,5 +9,8 @@
     "__main__.py": [
         "archive",
         "inbox"
+    ],
+    ".\\tasks.py": [
+        "src"
     ]
 }
