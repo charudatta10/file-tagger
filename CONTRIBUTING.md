@@ -1,39 +1,44 @@
-# Improved Barnacle Contribution Guidelines
+# Contributing Guidelines
 
-## Introduction
-
-Thank you for considering contributing to Improved Barnacle! As an open-source project, we value collaboration, transparency, and respectful behavior. These guidelines ensure a positive and inclusive environment for all contributors.
-
-## Code of Conduct
-
-Before contributing, please review our [Code of Conduct](https://github.com/charudatta10/improved-barnacle/blob/main/CODE_OF_CONDUCT.md). We expect all participants to follow these principles.
+Thank you for your interest in contributing to this project! We're excited to collaborate with you. To ensure a smooth process, please follow the guidelines below:
 
 ## How to Contribute
 
-1. **Fork the Repository**: Start by forking the Improved Barnacle repository to your GitHub account.
+1. **Report Bugs**: If you discover a bug, please check existing issues first to ensure it hasn't been reported. If not, create a new issue and include detailed steps to reproduce the bug.
+2. **Suggest Features**: We welcome feature suggestions! Please create a detailed issue describing the feature and its benefits.
+3. **Submit Code**: Contributions in the form of code are welcome! To get started:
+   - Fork the repository and clone it locally.
+   - Create a new branch for your work (e.g., `feature/your-feature-name`).
+   - Commit your changes with clear and descriptive messages.
+   - Push your branch and submit a pull request.
 
-2. **Clone the Repository**: Clone your forked repository to your local machine using `git clone`.
+## Code of Conduct
 
-3. **Create a Branch**: Create a new branch for your contribution using a descriptive name (e.g., `feature/my-awesome-feature`).
+All contributors are expected to adhere to our [Code of Conduct](CODE_OF_CONDUCT.md). Be respectful and constructive in your communication.
 
-4. **Make Changes**: Write your code, documentation, or other contributions. Follow the existing coding style and conventions.
+## Code Style
 
-5. **Test Your Changes**: Ensure your changes work as expected and do not break existing functionality.
+- Follow the existing coding style and conventions of the project.
+- Ensure your code is clean and well-documented.
+- Test your changes thoroughly before submitting.
 
-6. **Commit and Push**: Commit your changes with clear commit messages and push them to your forked repository.
+## Pull Request Process
 
-7. **Create a Pull Request (PR)**: Open a PR from your branch to the `main` branch of Improved Barnacle. Provide a detailed description of your changes.
+1. Ensure your branch is up-to-date with the `main` branch.
+2. Describe the purpose of your pull request clearly in the description.
+3. Link related issues (if applicable) and explain how your PR resolves them.
+4. Ensure all checks pass and include unit tests if applicable.
 
-8. **Review and Iterate**: Collaborate with maintainers and other contributors. Address feedback and make necessary adjustments.
+## Issues and Labels
 
-9. **Celebrate!**: Once your PR is merged, celebrate your contribution! 🎉
+- Use relevant labels when creating or updating issues (e.g., `bug`, `enhancement`, `documentation`).
+- If you’re unsure how to label an issue, the maintainers will assign appropriate labels.
 
-## Licensing
+## Tests
 
-By contributing to Improved Barnacle, you agree that your work will be licensed under the GPL-3.0 license. Make sure your contributions comply with this license.
+- Include tests to cover new features or bug fixes.
+- Ensure all existing tests pass before submitting your contribution.
 
-## Questions or Assistance?
+## License
 
-If you have any questions or need assistance, feel free to reach out to the maintainers or create an issue.
-
-Thank you for being part of the Improved Barnacle community! 🚀
+By contributing to this repository, you agree that your contributions will be licensed under the [repository's license](LICENSE).
